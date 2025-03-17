@@ -8,13 +8,26 @@ app.get("/", (req, res) => {
 });
 
 app.get("/contact", (req, res) => {
-  console.log(req);
-  res.render("contact");
+  let userdata = [
+    (student = {
+      name: "Manish",
+      age: 20,
+      section: "A",
+    }),
+    (teacher = {
+      name: "motte",
+      age: 40,
+      address: "tarahara",
+    }),
+  ];
+  res.render("contact", { student: student, teacher: teacher, userdata });
 });
 app.get("/about", (req, res) => {
   let name = "Manish";
   res.render("about", { name });
 });
+
+app.use(express.static("public/css"));
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
