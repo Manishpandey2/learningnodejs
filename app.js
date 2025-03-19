@@ -1,6 +1,8 @@
 let express = require("express");
 let app = express();
 
+require("./model/index");
+
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
