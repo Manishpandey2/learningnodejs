@@ -1,6 +1,8 @@
+require("dotenv").config();
+
 let express = require("express");
 let app = express();
-
+console.log("Database user", process.env.DATABASE_USER);
 require("./model/index");
 
 app.set("view engine", "ejs");

@@ -1,10 +1,23 @@
 const { Sequelize, DataTypes } = require("sequelize");
+const databaseConfig = require("../config/dbCofig");
 
-const sequelize = new Sequelize("meroblog", "root", "", {
-  host: "localhost",
-  port: 3306,
-  dialect: "mysql",
-});
+const sequelize = new Sequelize(
+  databaseConfig.database,
+  databaseConfig.username,
+  databaseConfig.password,
+  {
+    host: databaseConfig.host,
+    port: databaseConfig.port,
+    dialect: databaseConfig.dialect,
+    operatorsAliases: false,
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
+    },
+  }
+);
 
 const db = {};
 
