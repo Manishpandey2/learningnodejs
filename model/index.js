@@ -1,5 +1,7 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const databaseConfig = require("../config/dbCofig");
+const blogModle = require("./blogModel");
+const userModel = require("./userModel");
 
 const sequelize = new Sequelize(
   databaseConfig.database,
@@ -27,6 +29,8 @@ db.sequelize = sequelize;
 db.sequelize.sync({ force: true }).then(() => {
   console.log("yes re-sync done");
 });
+db.Sequelize = blogModle(sequelize, DataTypes);
+db.Sequelize = userModel(sequelize, DataTypes);
 
 sequelize
   .authenticate()
