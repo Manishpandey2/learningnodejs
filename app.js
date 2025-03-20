@@ -1,34 +1,28 @@
 require("dotenv").config();
 
 let express = require("express");
+const { db } = require("./model/index");
+const { blogs } = db;
 let app = express();
 
 require("./model/index");
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
-  res.render("home");
+app.get("/createpost", (req, res) => {
+  res.render("createpost");
 });
-
-app.get("/contact", (req, res) => {
-  let userdata = [
-    (student = {
-      name: "Manish",
-      age: 20,
-      section: "A",
-    }),
-    (teacher = {
-      name: "motte",
-      age: 40,
-      address: "tarahara",
-    }),
-  ];
-  res.render("contact", { student: student, teacher: teacher, userdata });
-});
-app.get("/about", (req, res) => {
-  let name = "Manish";
-  res.render("about", { name });
+app.post("/createpost", async (req, res) => {
+  const { title, description, category, image } = req.body;
+  await blogs.create({
+    title: title,
+    description: description,
+    category: category,
+    image: image,
+  });
+  res.send("Blog created successfully");
 });
 
 app.use(express.static("public/css"));

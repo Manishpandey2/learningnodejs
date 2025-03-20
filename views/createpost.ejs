@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post Form</title>
+    <link rel="stylesheet" href="/createpost.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">Mero BLog</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="form-container">
+            <div class="form-header">
+                <h1>Submit a New Article</h1>
+                <p>Fill out the form below to add your article to our catalog</p>
+            </div>
+            
+            <form id="BlogForm" action="/createpost" method="post">
+                <div class="form-group">
+                    <label for="title">Blog Title</label>
+                    <input type="text" id="title" name="title" required placeholder="Enter Blog title">
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Blog Description</label>
+                    <textarea id="description" name="description" rows="4" required placeholder="Describe your Blog"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="home">Home & Kitchen</option>
+                        <option value="books">Books</option>
+                        <option value="toys">Toys & Games</option>
+                        <option value="beauty">Beauty & Personal Care</option>
+                        <option value="sports">Sports & Outdoors</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label> Image</label>
+                    <div class="image-upload">
+                        <div class="image-preview">
+                            <img id="preview" src="/api/placeholder/300/200" alt="Blog image preview">
+                        </div>
+                        <div class="file-input-wrapper">
+                            <button type="button" class="file-input-btn">Choose Image</button>
+                            <input type="file" id="image" name="image" accept="image/*">
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit Article</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Toggle navigation menu on mobile
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Preview image before upload
+        document.getElementById('image').addEventListener('change', function(e) {
+            const preview = document.getElementById('preview');
+            const file = e.target.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        
+    </script>
+</body>
+</html>

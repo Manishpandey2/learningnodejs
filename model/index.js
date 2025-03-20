@@ -2,6 +2,7 @@ const { Sequelize, DataTypes } = require("sequelize");
 const databaseConfig = require("../config/dbCofig");
 const blogModle = require("./blogModel");
 const userModel = require("./userModel");
+const createBlog = require("./blogModel");
 
 const sequelize = new Sequelize(
   databaseConfig.database,
@@ -26,11 +27,11 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync({ force: false }).then(() => {
   console.log("yes re-sync done");
 });
-db.Sequelize = blogModle(sequelize, DataTypes);
-db.Sequelize = userModel(sequelize, DataTypes);
+db.blogs = createBlog(sequelize, DataTypes);
+db.users = userModel(sequelize, DataTypes);
 
 sequelize
   .authenticate()
@@ -40,4 +41,4 @@ sequelize
   .catch((err) => {
     console.log("error while connecting database", err);
   });
-module.exports = sequelize;
+module.exports = { sequelize, db };
