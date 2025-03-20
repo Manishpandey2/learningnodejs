@@ -17,8 +17,10 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.get("/createpost", (req, res) => {
-  res.render("createpost");
+app.get("/createpost", async (req, res) => {
+  const blogDAta = await blogs.findAll();
+
+  res.render("createpost", { blog: blogDAta });
 });
 app.post("/createpost", upload.single("image"), async (req, res) => {
   const { title, description, category } = req.body;

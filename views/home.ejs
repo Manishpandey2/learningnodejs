@@ -47,8 +47,17 @@
         </div>
         
         <div class="card-grid">
+            <% if (blog.length > 0) { %>
+                <% blog.forEach(post => { %>
+                  <h2><%= post.title %></h2>
+                  <p><%= post.content %></p>
+                <% }) %>
+              <% } else { %>
+                <p>No blogs found.</p>
+              <% } %>
+              
             <!-- Article 1 -->
-            <div class="card">
+            <!-- <div class="card">
                 <div class="card-img">
                     <img src="/api/placeholder/350/200" alt="Technology Article">
                     <div class="card-category">Technology</div>
@@ -61,7 +70,23 @@
                         <a href="#" class="read-more">Read More</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
+            <!-- <% blog.forEach(blog => { %>
+                <div class="card">
+                    <div class="card-img">
+                        <img src="/uploads/<%= blog.image %>" alt="<%= blog.title %>">
+                        <div class="card-category"><%= blog.category %></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title"><%= blog.title %></h3>
+                        <p class="card-description"><%= blog.description %></p>
+                        <div class="card-meta">
+                            <span>By Admin • <%= blog.createdAt.toDateString() %></span>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %> -->
             
             
         </div>
