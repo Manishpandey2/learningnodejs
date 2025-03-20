@@ -17,7 +17,8 @@ app.get("/createpost", (req, res) => {
   res.render("createpost");
 });
 app.post("/createpost", upload.single("image"), async (req, res) => {
-  const { title, description, category, image } = req.body;
+  const { title, description, category } = req.body;
+  const image = req.file.filename;
   await blogs.create({
     title: title,
     description: description,

@@ -10,7 +10,7 @@ const createBlog = (sequelize, DataTypes) => {
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     category: {
       type: DataTypes.STRING,
