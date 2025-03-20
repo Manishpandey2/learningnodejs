@@ -6,6 +6,8 @@ const { blogs } = db;
 let app = express();
 
 require("./model/index");
+const { multer, storage } = require("./middleware/multerConfig");
+const upload = multer({ storage: storage });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -14,7 +16,7 @@ app.set("view engine", "ejs");
 app.get("/createpost", (req, res) => {
   res.render("createpost");
 });
-app.post("/createpost", async (req, res) => {
+app.post("/createpost", upload.single("image"), async (req, res) => {
   const { title, description, category, image } = req.body;
   await blogs.create({
     title: title,
