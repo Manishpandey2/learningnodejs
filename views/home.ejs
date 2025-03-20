@@ -3,10 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BlogHub - Home</title>
     <link rel="stylesheet" href="/home.css">
 </head>
 <body>
-    <h1>this is home page</h1>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">Mero BLog</div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Write</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-container">
+            <h1>Discover Inspiring Stories</h1>
+            <p>Read the latest insights, tips, and stories from our community of writers</p>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search for articles...">
+                <button class="search-btn">🔍</button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Featured Articles Section -->
+    <section class="featured">
+        <div class="section-title">
+            <h2>Featured Articles</h2>
+            <p>Our editors' picks for the best content on the platform</p>
+        </div>
+        
+        <div class="card-grid">
+            <!-- Article 1 -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/350/200" alt="Technology Article">
+                    <div class="card-category">Technology</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">The Future of AI in Everyday Life</h3>
+                    <p class="card-description">How artificial intelligence is transforming our daily routines and what to expect in the coming years.</p>
+                    <div class="card-meta">
+                        <span>By Sarah Johnson • March 15, 2025</span>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+        
+        <div class="view-more">
+            <a href="#" class="view-more-btn">View All Articles</a>
+        </div>
+    </section>
+    
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="section-title">
+            <h2>Browse Categories</h2>
+            <p>Find articles and stories that match your interests</p>
+        </div>
+        
+        <div class="category-container">
+            <div class="category-item active">All</div>
+            <div class="category-item">Technology</div>
+            <div class="category-item">Health</div>
+            <div class="category-item">Travel</div>
+            <div class="category-item">Food</div>
+            <div class="category-item">Lifestyle</div>
+            <div class="category-item">Finance</div>
+            <div class="category-item">Self-Improvement</div>
+            <div class="category-item">Science</div>
+            <div class="category-item">Culture</div>
+        </div>
+    </section>
+    
+    <!-- Subscribe Section -->
+    <section class="subscribe">
+        <div class="section-title">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter to receive the latest articles in your inbox</p>
+        </div>
+        <form class="subscribe-form">
+            <input type="email" class="subscribe-input" placeholder="Enter your email address">
+            <button type="submit" class="subscribe-btn">Subscribe</button>
+        </form>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#" class="social-link">f</a>
+            <a href="#" class="social-link">t</a>
+            <a href="#" class="social-link">in</a>
+            <a href="#" class="social-link">ig</a>
+        </div>
+        <p>&copy; 2025 BlogHub. All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        // Toggle navigation menu on mobile
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Category selection
+        const categoryItems = document.querySelectorAll('.category-item');
+        categoryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                categoryItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
