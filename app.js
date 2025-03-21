@@ -13,14 +13,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
-  res.render("home");
+app.get("/", async (req, res) => {
+  const datas = await blogs.findAll();
+  res.render("home", { blogs: datas });
 });
 
-app.get("/createpost", async (req, res) => {
-  const blogDAta = await blogs.findAll();
-
-  res.render("createpost", { blog: blogDAta });
+app.get("/createpost", (req, res) => {
+  res.render("createpost");
 });
 app.post("/createpost", upload.single("image"), async (req, res) => {
   const { title, description, category } = req.body;
@@ -35,6 +34,7 @@ app.post("/createpost", upload.single("image"), async (req, res) => {
 });
 
 app.use(express.static("public/css"));
+app.use(express.static("./storage/"));
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
