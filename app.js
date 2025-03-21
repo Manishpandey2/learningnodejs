@@ -18,6 +18,20 @@ app.get("/", async (req, res) => {
   res.render("home", { blogs: datas });
 });
 
+app.get("/singleBlog/:id", async (req, res) => {
+  const id = req.params.id;
+  const blog = await blogs.findByPk(id);
+  res.render("singleBlog", { blog: blog });
+});
+app.get("/deleteBlog", (req, res) => {
+  res.render("deleteBlog");
+});
+app.get("/dashboard", async (req, res) => {
+  const datas = await blogs.findAll();
+
+  res.render("dashboard", { blogs: datas });
+});
+
 app.get("/createpost", (req, res) => {
   res.render("createpost");
 });

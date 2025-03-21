@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogHub - The Future of AI in Everyday Life</title>
+    <link rel="stylesheet" href="/singleBLog.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">BlogHub</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#" class="active">Articles</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Write</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Article Header -->
+    <header class="article-header">
+        <div class="article-header-container">
+            <div class="article-category"><%= blog.category %></div>
+            <h1 class="article-title"><%= blog.title %></h1>
+            <div class="article-meta">
+                <div class="article-author">
+                    <img src="/api/placeholder/50/50" alt="Sarah Johnson" class="author-img">
+                    <span>By Sarah Johnson</span>
+                </div>
+                <div class="article-date"><%= blog.createdAt %></div>
+                <div class="article-read-time">8 min read</div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Article Content -->
+    <article class="article-content">
+        <p><%= blog.description %></p>
+        
+        <p><%= blog.description %></p>
+        
+        <img src="http://localhost:3000/<%= blog.image %>" alt="AI in everyday life" class="article-img">
+        
+        <p><%= blog.description %></p>
+        
+        <p><%= blog.description %></p>
+        
+        <p><%= blog.description %></p>
+        
+        <p><%= blog.description %></p>
+        
+        <p><%= blog.description %></p>
+        <p><%= blog.description %></p><%= blog.description %></p>
+        
+        <img src="http://localhost:3000/<%= blog.image %>" alt="AI in healthcare" class="article-img">
+        
+        <p><%= blog.description %></p>
+        
+        <!-- Author Bio -->
+        <div class="author-bio">
+            <img src="/api/placeholder/80/80" alt="Sarah Johnson" class="author-img-large">
+            <div class="author-info">
+                <h4>About Sarah Johnson</h4>
+                <p>Sarah is a technology journalist specializing in artificial intelligence and its social impacts. With a background in both computer science and sociology, she brings a unique perspective to discussions about emerging technologies.</p>
+                <p>Follow her on Twitter @sarahjtech</p>
+            </div>
+        </div>
+        
+        <!-- Social Share -->
+        <div class="social-share">
+            <span class="share-label">Share this article:</span>
+            <div class="share-links">
+                <a href="#" class="share-btn">f</a>
+                <a href="#" class="share-btn">t</a>
+                <a href="#" class="share-btn">in</a>
+                <a href="#" class="share-btn">ig</a>
+            </div>
+        </div>
+    </article>
+    
+    <!-- Comments Section -->
+    <section class="comments">
+        <h3 class="comments-title">Comments (4)</h3>
+        
+        <!-- Comment 1 -->
+        <div class="comment">
+            <img src="/api/placeholder/60/60" alt="User" class="comment-avatar">
+            <div class="comment-content">
+                <h4>James Wilson</h4>
+                <div class="comment-date">March 16, 2025</div>
+                <p class="comment-text">Great article! I've been following AI developments for years, and I agree that we're just scratching the surface. I'm particularly excited about the healthcare applications you mentioned. The ability to detect potential health issues before symptoms appear could be revolutionary.</p>
+            </div>
+        </div>
+        
+        <!-- Comment 2 -->
+        <div class="comment">
+            <img src="/api/placeholder/60/60" alt="User" class="comment-avatar">
+            <div class="comment-content">
+                <h4>Lisa Chen</h4>
+                <div class="comment-date">March 16, 2025</div>
+                <p class="comment-text">I appreciate that you addressed both the benefits and challenges of increasing AI integration. The privacy concerns are very real, and I think we need stronger regulations to ensure these systems are developed responsibly.</p>
+            </div>
+        </div>
+        
+        <!-- Comment 3 -->
+        <div class="comment">
+            <img src="/api/placeholder/60/60" alt="User" class="comment-avatar">
+            <div class="comment-content">
+                <h4>Robert Johnson</h4>
+                <div class="comment-date">March 17, 2025</div>
+                <p class="comment-text">The part about economic disruption really resonated with me. I work in an industry that's already seeing automation, and while I'm excited about the possibilities, there's definitely anxiety about the future. I'd love to see more discussion about concrete policies to help workers transition.</p>
+            </div>
+        </div>
+        
+        <!-- Comment 4 -->
+        <div class="comment">
+            <img src="/api/placeholder/60/60" alt="User" class="comment-avatar">
+            <div class="comment-content">
+                <h4>Maria Garcia</h4>
+                <div class="comment-date">March 18, 2025</div>
+                <p class="comment-text">I love your conclusion about human-centered AI. Too often the narrative is either "AI will save us" or "AI will destroy us," when the reality is that we have agency in how these tools are developed and deployed. Technology should enhance human capabilities, not replace them.</p>
+            </div>
+        </div>
+        
+        <!-- Comment Form -->
+        <div class="comment-form">
+            <h3>Leave a Comment</h3>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <textarea id="comment" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Post Comment</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Related Articles Section -->
+    <section class="related-articles">
+        <div class="section-title">
+            <h2>Related Articles</h2>
+            <p>You might also be interested in these articles</p>
+        </div>
+        
+        <div class="related-grid">
+            <!-- Related Article 1 -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/350/200" alt="Ethics of AI">
+                    <div class="card-category">Technology</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">The Ethics of AI: Navigating New Moral Frontiers</h3>
+                    <p class="card-description">Exploring the complex ethical questions raised by increasingly autonomous AI systems in society.</p>
+                    <div class="card-meta">
+                        <span>By David Park • March 10, 2025</span>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Related Article 2 -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/350/200" alt="AI in Education">
+                    <div class="card-category">Education</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">AI in Education: Personalizing Learning for Every Student</h3>
+                    <p class="card-description">How artificial intelligence is transforming classrooms by adapting to individual learning styles and needs.</p>
+                    <div class="card-meta">
+                        <span>By Michelle Lee • March 12, 2025</span>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Related Article 3 -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/350/200" alt="AI Privacy">
+                    <div class="card-category">Privacy</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Protecting Your Privacy in an AI-Driven World</h3>
+                    <p class="card-description">Practical steps for maintaining personal privacy while still benefiting from AI-powered services.</p>
+                    <div class="card-meta">
+                        <span>By Thomas Garcia • March 14, 2025</span>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Subscribe Section -->
+    <section class="subscribe">
+        <h2>Stay Updated on AI Trends</h2>
+        <p>Join our newsletter to receive the latest insights on AI developments and how they impact everyday life.</p>
+        <form class="subscribe-form">
+            <input type="email" placeholder="Your email address" class="subscribe-input" required>
+            <button type="submit" class="subscribe-btn">Subscribe</button>
+        </form>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#" class="social-link">f</a>
+            <a href="#" class="social-link">t</a>
+            <a href="#" class="social-link">in</a>
+            <a href="#" class="social-link">ig</a>
+        </div>
+        <p>&copy; 2025 BlogHub. All rights reserved.</p>
+        <p>
+            <a href="#" style="color: white; margin: 0 10px;">Privacy Policy</a>
+            <a href="#" style="color: white; margin: 0 10px;">Terms of Service</a>
+            <a href="#" style="color: white; margin: 0 10px;">Contact Us</a>
+        </p>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
