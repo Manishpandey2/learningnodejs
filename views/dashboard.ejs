@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlogHub - Dashboard</title>
+    <title>Mero BLog - Dashboard</title>
     <link rel="stylesheet" href="/home.css">
     <style>
         /* Additional dashboard-specific styles */
@@ -114,7 +114,7 @@
     <div class="dashboard-container">
         <div class="dashboard-actions">
             <h2>Manage Blogs</h2>
-            <button class="search-btn" onclick="openModal()">+ Create New Blog</button>
+            
         </div>
 
         <table class="blog-table">
@@ -133,8 +133,8 @@
                     <td><%= blog.category %></td>
                     <td><img src="<%= blog.image %>" alt="Thumbnail" style="width: 50px; height: auto;"></td>
                     <td class="action-buttons">
-                        <button class="edit-btn" onclick="editBlog('<%= blog.id %>')">Edit</button>
-                        <button class="delete-btn" onclick="deleteBlog('<%= blog.id %>')">Delete</button>
+                        <a class="edit-btn" href="/edit/<%= blog.id %>">Edit</a>
+                        <a class="delete-btn" href="/deleteBlog/<%= blog.id %>">Delete</a>
                     </td>
                 </tr>
                 <% }) %>
@@ -176,44 +176,6 @@
         </div>
     </div>
 
-    <script>
-        // Modal Handling
-        const modal = document.getElementById('blogModal');
-
-        function openModal() {
-            modal.style.display = 'block';
-        }
-
-        function closeModal() {
-            modal.style.display = 'none';
-        }
-
-        // Handle form submission
-        document.getElementById('blogForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Add logic to handle create/update
-            closeModal();
-        });
-
-        // Edit Blog
-        function editBlog(blogId) {
-            // Add logic to fetch blog data and populate form
-            openModal();
-        }
-
-        // Delete Blog
-        function deleteBlog(blogId) {
-            if(confirm('Are you sure you want to delete this blog?')) {
-                // Add delete logic
-            }
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-    </script>
+    
 </body>
 </html>

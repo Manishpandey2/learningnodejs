@@ -18,6 +18,12 @@ app.get("/", async (req, res) => {
   res.render("home", { blogs: datas });
 });
 
+app.get("/deleteBlog/:id", async (req, res) => {
+  const id = req.params.id;
+  await blogs.destroy({ where: { id: id } });
+  res.redirect("/dashboard");
+});
+
 app.get("/singleBlog/:id", async (req, res) => {
   const id = req.params.id;
   const blog = await blogs.findByPk(id);
