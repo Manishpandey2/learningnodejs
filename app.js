@@ -25,19 +25,22 @@ app.get("/deleteBlog/:id", async (req, res) => {
   await blogs.destroy({ where: { id: id } });
   res.redirect("/dashboard");
 });
-
+app.get("/deleteUser/:id", async (req, res) => {
+  const id = req.params.id;
+  await users.destroy({ where: { id: id } });
+  res.redirect("/dashboard");
+});
 app.get("/singleBlog/:id", async (req, res) => {
   const id = req.params.id;
   const blog = await blogs.findByPk(id);
   res.render("singleBlog", { blog: blog });
 });
-app.get("/deleteBlog", (req, res) => {
-  res.render("deleteBlog");
-});
+
 app.get("/dashboard", async (req, res) => {
   const datas = await blogs.findAll();
+  const user = await users.findAll();
 
-  res.render("dashboard", { blogs: datas });
+  res.render("dashboard", { blogs: datas, users: user });
 });
 
 app.get("/register", (req, res) => {

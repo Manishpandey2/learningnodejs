@@ -94,21 +94,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="logo">Mero Blog Dashboard</div>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="#" class="active">Dashboard</a></li>
-                <li><a href="#">Logout</a></li>
-            </ul>
-            <div class="hamburger">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-    </nav>
+    <%- include('./navbar.ejs') %>
 
     <!-- Dashboard Content -->
     <div class="dashboard-container">
@@ -141,40 +127,37 @@
             </tbody>
         </table>
     </div>
-
-    <!-- Create/Edit Modal -->
-    <div id="blogModal" class="modal">
-        <div class="modal-content">
-            <h3 id="modalTitle">Create New Blog</h3>
-            <form id="blogForm">
-                <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" id="blogTitle" required>
-                </div>
-                <div class="form-group">
-                    <label>Category</label>
-                    <select id="blogCategory">
-                        <option value="Technology">Technology</option>
-                        <option value="Travel">Travel</option>
-                        <option value="Food">Food</option>
-                        <option value="Lifestyle">Lifestyle</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Image URL</label>
-                    <input type="url" id="blogImage" required>
-                </div>
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea id="blogDescription" rows="4" required></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="subscribe-btn">Save</button>
-                    <button type="button" class="delete-btn" onclick="closeModal()">Cancel</button>
-                </div>
-            </form>
+    <div class="dashboard-container">
+        <div class="dashboard-actions">
+            <h2>Manage Users</h2>
+            
         </div>
+
+        <table class="blog-table">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach((user) => { %>
+                <tr>
+                    <td><%= user.name %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.createdAt %></td>
+                    <td class="action-buttons">
+                        <a class="delete-btn" href="/deleteUser/<%= user.id %>">Delete</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
     </div>
+
+
 
     
 </body>
