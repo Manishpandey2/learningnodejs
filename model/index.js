@@ -25,11 +25,11 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+db.blogs = createBlog(sequelize, DataTypes);
+db.users = userModel(sequelize, DataTypes);
 db.sequelize.sync({ force: false }).then(() => {
   console.log("yes re-sync done");
 });
-db.blogs = createBlog(sequelize, DataTypes);
-db.users = userModel(sequelize, DataTypes);
 
 sequelize
   .authenticate()
