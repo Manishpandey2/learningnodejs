@@ -50,3 +50,32 @@ exports.getEditBlog = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
+
+exports.postEditBLog = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { title, description, category } = req.body;
+    const image = req.file;
+
+    if (!title || !description || !category) {
+      return res.status(400).send("Each Fields are required except image");
+    }
+    const updateData = {
+      title,
+      description,
+      category,
+    };
+    if (image) {
+      updateData.image = image.filename;
+    }
+    await blogs.update(updateData, {
+      where: {
+        id: id,
+      },
+    });
+    res.status(200).redirect("/dashboard");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Server error");
+  }
+};

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Create Post Form</title>
+        <title>Edit Post Form</title>
         <link rel="stylesheet" href="/createpost.css">
     </head>
     <body>
@@ -30,14 +30,14 @@
                         <label for="category">Category</label>
                         <select id="category" name="category" required>
                             <option value="" disabled selected>Select a category</option>
-                            <option value="electronics" <%= blog.category === "electronics"?"selected":"" %>>All</option>
-                            <option value="clothing" <%= blog.category==="clothing"?"selected":"" %>clothing</option>
-                            <option value="health" <%= blog.category==="health"?"selected":"" %>Health</option>
-                            <option value="books"<%= blog.category==="books"?"selected":"" %>Books</option>
-                            <option value="toys" <%= blog.category==="toys"?"selected":"" %>Toys</option>
-                            <option value="beauty" <%= blog.category==="beauty"?"selected":"" %>Beauty</option>
-                            <option value="sports" <%= blog.category==="sports"?"selected":"" %>Sports</option>
-                            <option value="other" <%= blog.category==="other"?"selected":"" %>Other</option>
+                            <option value="electronics" <%= blog.category === "electronics"?"selected":"" %>>Electronics</option>
+                            <option value="clothing" <%= blog.category==="clothing"?"selected":"" %>>Clothing</option>
+                            <option value="health" <%= blog.category==="health"?"selected":"" %>>Health</option>
+                            <option value="books"<%= blog.category==="books"?"selected":"" %>>Books</option>
+                            <option value="toys" <%= blog.category==="toys"?"selected":"" %>>Toys</option>
+                            <option value="beauty" <%= blog.category==="beauty"?"selected":"" %>>Beauty</option>
+                            <option value="sports" <%= blog.category==="sports"?"selected":"" %>>Sports</option>
+                            <option value="other" <%= blog.category==="other"?"selected":"" %>>Other</option>
                         
                         </select>
                     </div>
