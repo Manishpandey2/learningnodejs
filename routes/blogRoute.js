@@ -3,6 +3,7 @@ const {
   postCreatePost,
   deleteBlog,
   singleBlog,
+  getEditBlog,
 } = require("../controller/blogController");
 const { multer, storage } = require("../middleware/multerConfig");
 
@@ -17,5 +18,6 @@ router
   .post(upload.single("image"), postCreatePost);
 router.route("/deleteBlog/:id").get(deleteBlog);
 router.route("/singleBlog/:id").get(singleBlog);
+router.route("/editpost/:id").get(getEditBlog);
 
 module.exports = router;

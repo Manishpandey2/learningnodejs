@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const { db } = require("../model/index");
 const { blogs } = db;
 exports.deleteBlog = async (req, res) => {
@@ -25,5 +26,27 @@ exports.postCreatePost = async (req, res) => {
     category: category,
     image: image,
   });
-  res.send("Blog created successfully");
+  // res.send("Blog created successfully");
+  res.redirect("dashboard");
+};
+
+exports.getEditBlog = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    if (isNaN(id)) {
+      return res.status(400).send("Invalid blog ID");
+    }
+
+    const blog = await blogs.findByPk(id);
+
+    if (!blog) {
+      return res.status(404).send("Blog not found");
+    }
+
+    res.render("editpost", { blog });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
 };

@@ -1,0 +1,91 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create Post Form</title>
+        <link rel="stylesheet" href="/createpost.css">
+    </head>
+    <body>
+        <%- include('./navbar.ejs') %>
+        
+        <div class="container">
+            <div class="form-container">
+                <div class="form-header">
+                    <h1>Edit Your Article</h1>
+                </div>
+                
+                <form id="BlogForm" action="/editpost/<%- blog.id %>" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="title">Blog Title</label>
+                        <input type="text" id="title" name="title" required value="<%- blog.title %>">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Blog Description</label>
+                        <textarea id="description" name="description" rows="4" required ><%- blog.description %></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="electronics" <%= blog.category === "electronics"?"selected":"" %>>All</option>
+                            <option value="clothing" <%= blog.category==="clothing"?"selected":"" %>clothing</option>
+                            <option value="health" <%= blog.category==="health"?"selected":"" %>Health</option>
+                            <option value="books"<%= blog.category==="books"?"selected":"" %>Books</option>
+                            <option value="toys" <%= blog.category==="toys"?"selected":"" %>Toys</option>
+                            <option value="beauty" <%= blog.category==="beauty"?"selected":"" %>Beauty</option>
+                            <option value="sports" <%= blog.category==="sports"?"selected":"" %>Sports</option>
+                            <option value="other" <%= blog.category==="other"?"selected":"" %>Other</option>
+                        
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label> Image</label>
+                        <div class="image-upload">
+                            <div class="image-preview">
+                                <img id="preview" src="http://localhost:3000/<%= blog.image %>" alt="Blog image preview" class="has-image">
+                            </div>
+                            <div class="file-input-wrapper">
+                                <button type="button" class="file-input-btn">Edit Image</button>
+                                <input type="file" id="image" name="image" accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Update Article</button>
+                </form>
+            </div>
+        </div>
+        
+        <script>
+            // Toggle navigation menu on mobile
+    const hamburger = document.querySelector('.hamburger');
+
+    if (hamburger) {
+        hamburger.addEventListener('click', function () {
+            document.querySelector('.nav-links')?.classList.toggle('active');
+        });
+    }
+            
+            // Preview image before upload
+            document.getElementById('image').addEventListener('change', function(e) {
+                const preview = document.getElementById('preview');
+                const file = e.target.files[0];
+                
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        preview.src = e.target.result;
+                        preview.style.display = 'block';
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            
+        </script>
+    </body>
+    </html>

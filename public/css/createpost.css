@@ -220,3 +220,6 @@ input:focus, textarea:focus, select:focus {
         padding: 1.5rem;
     }
 }
+.image-preview img.has-image {
+    display: block;
+}
