@@ -15,7 +15,6 @@ exports.singleBlog = async (req, res) => {
     },
   });
   res.render("singleBlog", { blog: blog });
-  console.log(blog);
 };
 
 exports.getCreatePost = (req, res) => {
