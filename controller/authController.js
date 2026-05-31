@@ -3,7 +3,7 @@ const saltRounds = 8;
 
 const { db } = require("../model/index");
 const { users } = db;
-
+const jwt = require("jsonwebtoken");
 exports.getRegister = (req, res) => {
   res.render("register");
 };
@@ -38,6 +38,13 @@ exports.postLogin = async (req, res) => {
   if (!bcrypt.compareSync(password, user[0].password)) {
     return res.send("Password is incorrect");
   }
-
+  const token = jwt.sign({ id: user[0].id }, process.env.JWT_SECRETKEY, {
+    expiresIn: "1d",
+  });
+  res.cookie("token", token, {
+    httpOnly: true,
+    sameSite: "strict",
+    maxAge: 24 * 60 * 60 * 1000,
+  });
   res.redirect("/dashboard");
 };
