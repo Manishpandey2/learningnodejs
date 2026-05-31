@@ -1,7 +1,9 @@
 const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
-const { users } = require("../model/userModel");
+
 const { where } = require("sequelize");
+const { db } = require("../model");
+const { users } = db;
 exports.isAuthenticated = async (req, res, next) => {
   const authtoken = req.cookies.token;
 

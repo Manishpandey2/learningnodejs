@@ -42,7 +42,7 @@
                     <h3 class="card-title"><%= blog.title %></h3>
                     <p class="card-description"><%= blog.description %>x</p>
                     <div class="card-meta">
-                        <span>By Sarah Johnson • March 15, 2025</span>
+                        <span><%- blog.user.name %> • March 15, 2025</span>
                         <a href="/singleBLog/<%=blog.id%>" class="read-more">Read More</a>
                     </div>
                 </div>

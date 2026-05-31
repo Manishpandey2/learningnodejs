@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const { Sequelize, DataTypes, BelongsTo } = require("sequelize");
 const databaseConfig = require("../config/dbCofig");
 const userModel = require("./userModel");
 const createBlog = require("./blogModel");
@@ -17,7 +17,7 @@ const sequelize = new Sequelize(
       acquire: 30000,
       idle: 10000,
     },
-  }
+  },
 );
 
 const db = {};
@@ -27,6 +27,10 @@ db.sequelize = sequelize;
 
 db.blogs = createBlog(sequelize, DataTypes);
 db.users = userModel(sequelize, DataTypes);
+
+db.users.hasMany(db.blogs);
+db.blogs.belongsTo(db.users);
+
 db.sequelize.sync({ force: false }).then(() => {
   console.log("yes re-sync done");
 });

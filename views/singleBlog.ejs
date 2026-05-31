@@ -19,9 +19,9 @@
             <div class="article-meta">
                 <div class="article-author">
                     <img src="/api/placeholder/50/50" alt="Sarah Johnson" class="author-img">
-                    <span>By Sarah Johnson</span>
+                    <span>By <%- blog.user.name %></span>
                 </div>
-                <div class="article-date"><%= blog.createdAt %></div>
+                <div class="article-date"><%= new Date(blog.createdAt).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" }) %></div>
                 <div class="article-read-time">8 min read</div>
             </div>
         </div>

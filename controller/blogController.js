@@ -1,6 +1,6 @@
 const { where } = require("sequelize");
 const { db } = require("../model/index");
-const { blogs } = db;
+const { blogs, users } = db;
 exports.deleteBlog = async (req, res) => {
   const id = req.params.id;
   await blogs.destroy({ where: { id: id } });
@@ -9,8 +9,13 @@ exports.deleteBlog = async (req, res) => {
 
 exports.singleBlog = async (req, res) => {
   const id = req.params.id;
-  const blog = await blogs.findByPk(id);
+  const blog = await blogs.findByPk(id, {
+    include: {
+      model: users,
+    },
+  });
   res.render("singleBlog", { blog: blog });
+  console.log(blog);
 };
 
 exports.getCreatePost = (req, res) => {
@@ -18,6 +23,8 @@ exports.getCreatePost = (req, res) => {
 };
 
 exports.postCreatePost = async (req, res) => {
+  const { id } = req.user;
+
   const { title, description, category } = req.body;
   const image = req.file.filename;
   await blogs.create({
@@ -25,6 +32,7 @@ exports.postCreatePost = async (req, res) => {
     description: description,
     category: category,
     image: image,
+    userId: id,
   });
   // res.send("Blog created successfully");
   res.redirect("dashboard");
